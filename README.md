@@ -35,7 +35,7 @@ Client → REST API → AWS Kinesis → Lambda Function → Processing/Storage
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/walaa-volidis/kinesis-chat-api.git
+git clone https://github.com/Walaa-Volidis/kinesis-chat-api
 cd kinesis-chat-api
 ```
 
