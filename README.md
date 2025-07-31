@@ -14,7 +14,6 @@ A Node.js REST API that streams chat messages to AWS Kinesis Data Streams, trigg
 
 ```
 Client → REST API → AWS Kinesis → Lambda Function → Processing/Storage
-<img width="1281" height="545" alt="image" src="https://github.com/user-attachments/assets/23f7bef8-1d26-47d0-919c-f68d6f4b9426" />
 
 ```
 
@@ -22,6 +21,9 @@ Client → REST API → AWS Kinesis → Lambda Function → Processing/Storage
 2. **Kinesis Stream**: Buffers and streams messages in real-time
 3. **Lambda Trigger**: Automatically processes incoming stream records
 4. **Downstream Processing**: Handle messages for storage, notifications, etc.
+
+<img width="1281" height="545" alt="image" src="https://github.com/user-attachments/assets/dc10cced-cb81-4370-8e4d-9aa551da739c" />
+
 
 ## 📋 Prerequisites
 
