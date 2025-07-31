@@ -24,7 +24,6 @@ Client → REST API → AWS Kinesis → Lambda Function → Processing/Storage
 
 <img width="1281" height="545" alt="image" src="https://github.com/user-attachments/assets/dc10cced-cb81-4370-8e4d-9aa551da739c" />
 
-
 ## 📋 Prerequisites
 
 - Node.js 18+
@@ -119,10 +118,47 @@ aws kinesis create-stream --stream-name chat-message-stream --shard-count 1
 
 Set up a Lambda function to process Kinesis records:
 
-
 ### 3. Configure Lambda Trigger
 
 Add the Kinesis stream as a trigger for your Lambda function.
+
+### 4. Lambda Execution Role Policy
+
+When setting up your Lambda function to process Kinesis events, ensure the Lambda execution role has the following IAM policy attached:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "logs:CreateLogGroup",
+      "Resource": "arn:aws:logs:*:YOUR_ACCOUNT_ID:*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["logs:CreateLogStream", "logs:PutLogEvents"],
+      "Resource": [
+        "arn:aws:logs:*:YOUR_ACCOUNT_ID:log-group:/aws/lambda/YOUR_LAMBDA_FUNCTION_NAME:*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "kinesis:GetRecords",
+        "kinesis:GetShardIterator",
+        "kinesis:DescribeStream",
+        "kinesis:DescribeStreamSummary",
+        "kinesis:ListShards",
+        "kinesis:ListStreams"
+      ],
+      "Resource": "arn:aws:kinesis:*:YOUR_ACCOUNT_ID:stream/chat-message-stream"
+    }
+  ]
+}
+```
+
+> **Note**: Replace `YOUR_ACCOUNT_ID` with your actual AWS account ID and `YOUR_LAMBDA_FUNCTION_NAME` with your Lambda function name.
 
 ## 🔐 IAM Permissions
 
