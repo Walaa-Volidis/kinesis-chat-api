@@ -15,7 +15,7 @@ export async function publishMessage({ sender, message }) {
   const params = {
     StreamName: STREAM_NAME,
     PartitionKey: sender,
-    Data: Buffer.from(JSON.stringify(data)),
+    Data: JSON.stringify(data),
   };
 
   const command = new PutRecordCommand(params);
