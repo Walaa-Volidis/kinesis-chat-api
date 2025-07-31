@@ -141,14 +141,6 @@ Required IAM policy for the API user:
 }
 ```
 
-## 📦 Dependencies
-
-- `express` - Web framework
-- `@aws-sdk/client-kinesis` - AWS Kinesis client
-- `dotenv` - Environment variable management
-- `uuid` - Unique identifier generation
-
-
 ## 🔗 Related
 
 - [AWS Kinesis Documentation](https://docs.aws.amazon.com/kinesis/)
