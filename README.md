@@ -14,6 +14,8 @@ A Node.js REST API that streams chat messages to AWS Kinesis Data Streams, trigg
 
 ```
 Client → REST API → AWS Kinesis → Lambda Function → Processing/Storage
+<img width="1281" height="545" alt="image" src="https://github.com/user-attachments/assets/23f7bef8-1d26-47d0-919c-f68d6f4b9426" />
+
 ```
 
 1. **REST API**: Receives chat messages via HTTP POST
@@ -143,6 +145,7 @@ Required IAM policy for the API user:
 - `@aws-sdk/client-kinesis` - AWS Kinesis client
 - `dotenv` - Environment variable management
 - `uuid` - Unique identifier generation
+
 
 ## 🔗 Related
 
