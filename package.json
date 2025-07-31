@@ -1,0 +1,15 @@
+{
+  "name": "chat-stream-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-kinesis": "^3.400.0",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "uuid": "^9.0.1"
+  }
+}
