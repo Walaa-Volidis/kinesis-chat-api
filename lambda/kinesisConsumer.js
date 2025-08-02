@@ -15,25 +15,22 @@ export const handler = async (event) => {
       });
 
       const rawData = record.kinesis.data;
-      console.log('Raw Data:', rawData);
+      console.log('Raw Data (base64):', rawData);
 
       try {
-        const jsonData = JSON.parse(rawData);
+        const decodedData = Buffer.from(rawData, 'base64').toString('utf-8');
+        console.log('Decoded Data:', decodedData);
+        const jsonData = JSON.parse(decodedData);
         console.log('Parsed JSON Data:', JSON.stringify(jsonData, null, 2));
-
         if (jsonData.sender && jsonData.message) {
-          console.log(
-            `Chat: ${jsonData.sender} says: "${jsonData.message}"`
-          );
+          console.log(`Chat: ${jsonData.sender} says: "${jsonData.message}"`);
         }
       } catch (parseError) {
-        console.log('Data is not valid JSON, treating as plain text');
+        console.log('Error parsing data:', parseError.message);
       }
     }
 
-    console.log(
-      `\nSuccessfully processed all ${event.Records.length} records`
-    );
+    console.log(`\nSuccessfully processed all ${event.Records.length} records`);
 
     return {
       statusCode: 200,
