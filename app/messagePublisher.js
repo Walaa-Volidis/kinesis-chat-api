@@ -19,6 +19,7 @@ export async function publishMessage({ sender, message }) {
   };
 
   const command = new PutRecordCommand(params);
+  //using await here is required!
   const result = await kinesis.send(command);
   return { ...data, kinesisResult: result };
 }
