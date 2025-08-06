@@ -23,7 +23,7 @@ export async function publishMessage({ sender, message }) {
     const result = await kinesis.send(command);
     return { ...data, kinesisResult: result };
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Failed to publish message to Kinesis:', error.message);
     throw error;
   }
 }
