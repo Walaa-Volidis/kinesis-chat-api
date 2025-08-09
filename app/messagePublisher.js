@@ -27,13 +27,8 @@ export async function publishMessage({ sender, message }) {
   };
 
   const command = new PutRecordCommand(params);
-  try {
-    const result = kinesis
-      .send(command)
-      .catch((err) => console.error('Kinesis publish failed:', err));
-    return { ...data, kinesisResult: result };
-  } catch (error) {
-    console.error('Failed to publish message to Kinesis:', error.message);
-    throw error;
-  }
+  const result = kinesis
+    .send(command)
+    .catch((err) => console.error('Kinesis publish failed:', err));
+  return { ...data, kinesisResult: result };
 }
