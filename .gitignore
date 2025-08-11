@@ -149,3 +149,29 @@ Thumbs.db
 
 # Local development files
 test-message.json
+
+
+# Terraform files to ignore
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+terraform.tfplan
+terraform.tfplan.*
+
+# Terraform iac folder specific files
+iac/*.tfstate
+iac/*.tfstate.*
+iac/.terraform/
+iac/.terraform.lock.hcl
+iac/terraform.tfplan
+iac/terraform.tfplan.*
+iac/lambda_function.zip
+iac/index.js
+
+# Sensitive files
+*.tfvars.backup
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
