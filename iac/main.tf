@@ -141,6 +141,27 @@ resource "aws_lambda_event_source_mapping" "kinesis_lambda_mapping" {
 }
 
 # Outputs
+resource "aws_cloudwatch_log_group" "kinesis_log_group" {
+  name              = "/aws/kinesis/${var.app_name}-${var.environment}"
+  retention_in_days = 14
+  tags = {
+    Name        = "KinesisLogGroup-${var.app_name}-${var.environment}"
+    Environment = var.environment
+    Application = var.app_name
+  }
+}
+
+resource "aws_cloudwatch_log_group" "lambda_log_group" {
+  name              = "/aws/lambda/${var.app_name}-processor-${var.environment}"
+  retention_in_days = 14
+
+  tags = {
+    Name        = "LambdaLogGroup-${var.app_name}-${var.environment}"
+    Environment = var.environment
+    Application = var.app_name
+  }
+}
+
 output "kinesis_stream_name" {
   description = "Name of the Kinesis stream"
   value       = aws_kinesis_stream.chat_stream.name
